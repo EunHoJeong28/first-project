@@ -95,10 +95,49 @@
         }
         button {
             /* 색상은 조원들가 선택하자 */
-            background-color: royalblue;
+            background-color: #EBFBFF(126, 129, 141);
             border-radius: 10px;
         }
+        .mycons{
+            overflow: hidden;
+            white-space : nowrap;
+            text-overflow : ellipsis;
+        }
+
+        /* 여기 버튼 스타일 */
+        .form-floating.file-input {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        width: 226px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        }
+
+        .form-floating.file-input input[type="file"] {
+        position: absolute;
+        left: -100%;
+        opacity: 0;
+        }
+
+        .form-floating.file-input label {
+        display: block;
+        padding: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        }
+
+        .form-floating.file-input:hover {
+        background-color: #e0e0e0;
+        }
+/* 여기까지 버튼 스타일 */
+
     </style>
+    
     <script>
         $(document).ready(function () {
             show_order();
@@ -113,7 +152,6 @@
                     let name = a['name']
                     let comment = a['comment']
                     let pandc = a['pandc']
-                    let pandc2 = a['pandc2']
                     let mbti = a['mbti']
                     let Deter = a['Deter']
                     let image = a['image']
@@ -136,44 +174,46 @@
         }
 
 
-
-        function posting() {  // 데이터추가 post (create)
-            let name = $('#name').val()    // 각각의 txt데이터 넣어주기 
+        function posting() {  // 데이터추가 post (create)    
+            let name = $('#name').val()    // 각각의 txt데이터 넣어주기    VER2 이미지 장단점 나누기 
             let comments = $('#comment').val()
             let pandc = $('#pandc').val()
             let pandc2 = $('#pandc2').val()
             let mbti = $('#mbti').val()
+            let nature = $('#nature').val()
             let Deter = $('#Deter').val()
             let image = $('#chooseFile').val().split('/').pop().split('\\').pop();   // 이미지의 이름과 확장명 
-            let image_all = $('#chooseFile')[0].files[0]  // id : chooseFile 의 0번째 태그의 0번째 파일 
+            let image_all = $('#chooseFile')[0].files[0]  // id : chooseFile 의 0번째 태그의 0번째 파일   
             let image2 = $('#chooseFile2').val().split('/').pop().split('\\').pop();   // 이미지의 이름과 확장명 
-            let image2_all = $('#chooseFile2')[0].files[0]  // id : chooseFile 의 0번째 태그의 0번째 파일 
-            // var fileName = $("#img").val().split('/').pop().split('\\').pop();   
+            let image_all2 = $('#chooseFile2')[0].files[0]
             
-           
+
             console.log(image)
             console.log(image_all)
-            console.log(image2)
-            console.log(image2_all)
             //콘솔로 데이터 받는거까지 확인완료
             let formData = new FormData();   // 전달받을 공간 만들기 
 
             formData.append("name_give", name);    // formData에 데이터넣기 
             formData.append("comment_give", comments);
             formData.append("pandc_give", pandc);
-            formData.append("pandc2_give", pandc2);
+            formData.append("pandc_give2", pandc2);
             formData.append("mbti_give", mbti);
+            formData.append("nature_give", nature);
             formData.append("Deter_give", Deter);
             formData.append("image_give", image);
             formData.append("imageall_give",image_all);
-            formData.append("image2_give", image2);
-            formData.append("imageall2_give",image2_all);
+            formData.append("image_give2", image2);
+            formData.append("imageall_give2",image_all2);
             // console.log(formData)
             fetch('/first_project', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {    //post로 flask에 전송  *경로를 같게 해야함* 
-                alert(['추가완료!'])
+                alert(['팀원이 되신걸 환영합니다!'])
                 window.location.reload() //새로고침               
             })
         }
+
+
+
+
         function toggleBox() { //추가버튼
             var x = document.getElementById("myBox");
             if (x.style.display === "none") {
@@ -188,6 +228,7 @@
         }
 
     </script>
+    
 </head>
 
 <body>
@@ -214,31 +255,36 @@
     
                     <!-- 사진을 넣는다면? 크기나 보여줄수있는 영역을 설정할수 있을까?
     업로드하는 형식의 코드가 필요할까? -->
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-3 file-input">
                         <input class="file" id="chooseFile" type="file" accept="image/png, image/jpeg, image/gif">
-                        <label for="floatingInput">사진</label>
+                        <label for="floatingInput">나를 소개하는 사진</label>
+
+                        
                     </div>
-                    <div class="form-floating mb-3">   <!--사진2-->
+                    <div class="form-floating mb-3 file-input">
                         <input class="file" id="chooseFile2" type="file" accept="image/png, image/jpeg, image/gif">
-                        <label for="floatingInput">사진2</label>
+                        <label for="floatingInput">MBTI 사진</label>
                     </div>
                     <!-- 및에 두개의 박스중 어느것이 좋을지 -->
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" id="pandc"></textarea>
                         <label for="floatingTextarea">장점</label>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating" style="margin-top: 20px;">
                         <textarea class="form-control" placeholder="Leave a comment here" id="pandc2"></textarea>
                         <label for="floatingTextarea">단점</label>
                     </div>
-    
+                    <div class="form-floating" style="margin-top: 20px;">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="nature"></textarea>
+                        <label for="floatingTextarea">성격</label>
+                    </div>    
                     <div style="margin: 20px;"></div>
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" id="comment"
                             style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">내소개</label>
+                        <label for="floatingTextarea2">내 소개</label>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating" style="margin-top: 20px;">
                         <textarea class="form-control" placeholder="Leave a comment here" id="Deter"
                             style="height: 100px"></textarea>
                         <label for="floatingTextarea2">임하는 각오</label>

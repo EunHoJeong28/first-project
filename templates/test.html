@@ -1,0 +1,254 @@
+<!-- <!doctype html>   기존에 작성하던 메인페이지
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <title>팀 소개 페이지</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+        .mytitle {
+            background-color: green;
+            color: white;
+
+            height: 450px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://t1.daumcdn.net/cfile/tistory/224B624356DE9B4D19');
+            background-position: center;
+            background-size: cover;
+        }
+        .mycomment {
+            color: gray;
+        }
+        .mycards {
+            width: 1500px;
+            margin: 70px auto 70px auto;
+        }
+        .mypost {
+            width: 95%;
+            max-width: 500px;
+            margin: 20px auto 0px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 3px 0px gray;
+
+            display: none;
+        }
+        .card{
+            margin: auto 60px auto 60px;
+            
+        }
+        .card-img{
+            height: 300px;
+        }
+        .mycards2 {            
+            width: 1400px;
+            margin: 70px auto 70px auto; 
+        }
+
+        .col2{
+            padding-left: 150px;
+            padding-right: 50px;
+        }
+        .col3{
+            padding-left: 50px;
+            padding-right: 150px;
+        }     
+        .mytitle>button {
+            width: 200px;
+            height: 50px;
+
+            background-color: transparent;
+            color: white;
+
+            border-radius: 50px;
+            border: 1px solid white;
+
+            margin-top: 10px;
+        }
+
+        .mytitle>button:hover {
+            border: 2px solid white;
+        }
+        /* .file-label {
+        margin-top: 30px;
+        background-color: #5b975b;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        width: 65%;
+        border-radius: 6px;
+        cursor: pointer;
+        }
+        .file {
+        display: none;
+        } */
+    </style>
+    <script>
+        function posting() {  //팀원 추가하기
+            let name = $('#name').val()    // 각각의 txt데이터 넣어주기 
+            let comments = $('#comment').val()
+            let pandc = $('#pandc').val()
+            let mbti = $('#mbti').val()
+            let Deter = $('#Deter').val()
+            let image = $('#chooseFile').val().split('/').pop().split('\\').pop();   // 이미지의 이름과 확장명 
+            let image_all = $('#chooseFile')[0].files[0]  // id : chooseFile 의 0번째 태그의 0번째 파일 
+            // var fileName = $("#img").val().split('/').pop().split('\\').pop();   
+            
+            // let pandc = $('#star').val()  이미지
+            // let mbti = $('#star').val()  이미지 
+
+            console.log(image)
+            console.log(image_all)
+            //콘솔로 데이터 받는거까지 확인완료
+            let formData = new FormData();   // 전달받을 공간 만들기 
+
+            formData.append("name_give", name);    // formData에 데이터넣기 
+            formData.append("comment_give", comments);
+            formData.append("pandc_give", pandc);
+            formData.append("mbti_give", mbti);
+            formData.append("Deter_give", Deter);
+            formData.append("image_give", image);
+            formData.append("imageall_give",image_all);
+            // console.log(formData)
+            fetch('/first_project', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {    //post로 flask에 전송  *경로를 같게 해야함* 
+                alert(['추가완료!'])
+                window.location.reload() //새로고침               
+            })
+            }                 
+        function close_box() { // 닫기 버튼
+         $('#post-box').hide()
+        }
+        function open_box() {
+            $('#post-box').show()
+        }
+   </script>
+    
+</head>
+
+<body>
+    <div class="mytitle">
+        <h5>팀원소개 프로젝트</h5>
+        <h1>Git 그리고 다음 Yo</h1>
+        <button onclick="open_box()">팀원 추가</button>
+    </div>
+
+    <div class="mypost" id="post-box">
+        <div class="form-floating mb-3">
+            <input id="name" type="email" class="form-control" placeholder="name@example.com">
+            <label>이름</label>
+        </div>
+        <div class="form-floating">
+            <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea2">소개</label>
+        </div>
+        <div class="form-floating">
+            <textarea id="pandc" class="form-control" placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea2">장/단점</label>
+        </div>
+        <div class="form-floating">
+            <textarea id="mbti" class="form-control" placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea2">mbti</label>
+        </div>                
+        <div class="form-floating">
+            <textarea id="Deter" class="form-control" placeholder="Leave a comment here"></textarea>
+            <label for="floatingTextarea2">각오</label>
+        </div>
+        <div>
+            <input class="file" id="chooseFile" type="file"  accept="image/png, image/jpeg, image/gif">
+        </div>
+        <div class="mybtns">
+            <button onclick="posting()" type="button" class="btn btn-dark">추가하기</button>
+            <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
+        </div>
+    
+    </div>
+    
+    <div class="mycards">
+        <div id="cards" class="row row-cols-1 row-cols-md-3">
+            <div class="col">
+                <div class="card">
+                    <a href="/sub"><img src="https://t1.daumcdn.net/cfile/tistory/224B624356DE9B4D19"
+                        class="card-img"></a>                   
+                    <div class="card-body">
+                        <h5 class="card-title">이름</h5>
+                        <p class="card-text">전공</p>                       
+                        <p class="mycomment">미리보기</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="col">
+                <div class="card">
+                    <a href="/sub"><img src="{{url_for('static', filename='TEST33.jpg')}}"
+                        class="card-img"></a>  
+                    <div class="card-body">
+                        <h5 class="card-title">이름</h5>
+                        <p class="card-text">전공</p>                       
+                        <p class="mycomment">미리보기</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="col">
+                <div class="card">
+                    <a href="sub.html"><img src="{{url_for('static', filename='gps.png')}}"
+                        class="card-img"></a>  
+                    <div class="card-body">
+                        <h5 class="card-title">이름</h5>
+                        <p class="card-text">전공</p>                      
+                        <p class="mycomment">미리보기</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="mycards2">   // 보이기용
+        <div id="cards2" class="row row-cols-1 row-cols-md-2">
+            <div class="col2">
+                <div class="card">
+                    <a href="sub.html"><img src="https://t1.daumcdn.net/cfile/tistory/224B624356DE9B4D19"
+                        class="card-img"></a>                   
+                    <div class="card-body">
+                        <h5 class="card-title">이름</h5>
+                        <p class="card-text">전공</p>                       
+                        <p class="mycomment">미리보기</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col3">
+                <div class="card">
+                    <a href="sub.html"><img src="https://t1.daumcdn.net/cfile/tistory/224B624356DE9B4D19"
+                        class="card-img"></a>                   
+                    <div class="card-body">
+                        <h5 class="card-title">이름</h5>
+                        <p class="card-text">전공</p>                       
+                        <p class="mycomment">미리보기</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+<!-- </body>
+
+</html> --> 
+
+
+
+
+
+

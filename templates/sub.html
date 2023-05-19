@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v5.js"></script>
+  
 
     <title>상세 페이지</title>
     <style>
@@ -48,25 +50,33 @@
         #tab-2:checked~.tab label:nth-child(2),
         #tab-3:checked~.tab label:nth-child(3),
         #tab-4:checked~.tab label:nth-child(4) {
-            background-color: rgba(0, 0, 0, 0.2);
-            box-shadow: none;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: black;
+            border-color: black;
         }
 
         .content>div {
             display: none;
+            box-shadow: black;
+            border-color: black;
         }
 
         #tab-1:checked~.content div:nth-child(1),
         #tab-2:checked~.content div:nth-child(2),
         #tab-3:checked~.content div:nth-child(3),
         #tab-4:checked~.content div:nth-child(4) {
+            box-shadow: black;
+            border-color: black;
             display: block;
         }
 
         .main {
             margin: 0 auto;
-            width: 1380px;
+            width: 1480px;
             max-width: 100%;
+            background-color: white;
         }
 
         .tab {
@@ -86,7 +96,10 @@
         }
 
         .content {
-            background-color: rgba(0, 0, 0, 0.2);
+            box-shadow: 1px black;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: white;
             min-height: 500px;
         }
 
@@ -112,54 +125,8 @@
             margin: 0px 0px 0px 0px;
         }
 
-        /* 버튼 스타일입니다*/
-        .mybutton {
-            margin: 0px auto 0px auto;
-            text-align: right;
-            width: 1300px;
-            padding: 20px 20px 20px 20px;
-        }
 
-        .mypost {
-            background-color: white;
-            width: 500px;
-            margin: 20px 0px 20px auto;
-            padding: 20px 20px 20px 20px;
-            background-position: center;
-            background-size: cover;
-            box-shadow: 0px 0px 5px 0px gray;
-            border-radius: 30px;
-        }
-
-        .cards {
-            width: 900px;
-            height: 300px;
-            margin: 20px auto 20px auto;
-        }
-
-        .my-pb {
-            margin: 20px auto 20px auto;
-            width: 200px;
-            text-align: center;
-        }
-
-        .mybutton>button {
-            /* 색상은 조원들가 선택하자 */
-            background-color: rgb(126, 129, 141);
-            border-radius: 10px;
-        }
-
-        .mybutton>button:hover {
-            border: 2px solid black;
-        }
-
-        .pres {
-            max-width: 800px;
-            width: 100;
-            margin: 20px auto;
-            float: left;
-        }
-
+        
         ul {
             font-size: 0;
         }
@@ -244,9 +211,297 @@
         ul>li>a:hover .bottom {
             top: 52%
         }
+
+        .word {
+            display: block;
+            color: black;
+            width: 570px;
+            font-size: 20px;
+            font-weight: bolder !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            line-height: 1.2;
+            /*        height: 4.8em;*/
+            text-align: left;
+            word-wrap: break-word;
+            display: -webkit-box;
+            /*        -webkit-line-clamp: 3 ;*/
+            -webkit-box-orient: vertical;
+        }
+
+        .image_mbti {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .box_mbti {
+            width: 400px;
+            height: 400px;
+            /* border-radius: 70%; */
+            overflow: hidden;
+
+        }
+
+        .word2 {
+            margin: 100px;
+            display: block;
+            color: black;
+            width: 630px;
+            font-size: 20px;
+            font-weight: bolder !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            line-height: 1.2;
+            /* height: 4.8em;*/
+            text-align: left;
+            word-wrap: break-word;
+            display: -webkit-box;
+            /* -webkit-line-clamp: 3 ;*/
+            -webkit-box-orient: vertical;
+        }
+
+        .h1_ {
+            margin: 100px;
+            width: 630px;
+        }
+
+        .mybutton {
+            margin: 0px auto 0px auto;
+            text-align: right;
+            width: 1300px;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .mypost {
+            background-color: white;
+            width: 500px;
+            margin: 20px 0px 20px auto;
+            padding: 20px 20px 20px 20px;
+            background-position: center;
+            background-size: cover;
+            box-shadow: 0px 0px 5px 0px gray;
+            border-radius: 30px;
+        }
+
+        .cards {
+            width: 900px;
+            height: 300px;
+            margin: 20px auto 20px auto;
+        }
+
+        .my-pb {
+            margin: 20px auto 20px auto;
+            width: 200px;
+            text-align: center;
+        }
+
+        .mybutton>button {
+            /* 색상은 조원들과 선택하자 */
+            background-color: #EBFBFF(126, 129, 141);
+            border-radius: 10px;
+        }
+
+        .mybutton>button:hover {
+            border: px solid black;
+        }
+
+        .pres2 {
+            border-top: 1px solid black;
+            width: 1450px;
+        }
+
+        .a2 {
+            display: flex;
+            align-items: center;
+        }
+
+        .a1 {
+            display: flex;
+            align-items: center;
+        }
+
+        .scr {
+            width: 300px;
+            height: 50%
+        }
+
+        
+
+        .gak-wrap {  
+            padding: 0px;
+            width: 100%;
+            margin: auto;
+            right: 0px;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        .gak-text {
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            padding-top: 140px;
+            
+            text-align: left;
+
+            margin: 100px;
+            display: block;
+            color: black;
+            width: 340px;
+            font-size: 30px;
+            font-weight: bolder !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            line-height: 1.2;
+            /* height: 4.8em;*/
+            text-align: left;
+            word-wrap: break-word;
+            display: -webkit-box;
+            /*-webkit-line-clamp: 3 ;*/
+            -webkit-box-orient: vertical;
+        }
+        .gak-text_ {
+            position: absolute;
+            top: 30%;
+            left: 25%;
+            padding-top: 140px;
+            
+            text-align: left;
+
+            margin: 100px;
+            display: block;
+            color: black;
+            width: 1000px;
+            font-size: 30px;
+            font-weight: bolder !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            line-height: 1.2;
+            /* height: 4.8em;*/
+            text-align: left;
+            word-wrap: break-word;
+            display: -webkit-box;
+            /*-webkit-line-clamp: 3 ;*/
+            -webkit-box-orient: vertical;
+        }
+        .gak-text_2 {
+            position: absolute;
+            top: 63%;
+            left: 25%;
+            padding-top: 140px;
+            
+            text-align: left;
+
+            margin: 100px;
+            display: block;
+            color: black;
+            width: 1000px;
+            font-size: 30px;
+            font-weight: bolder !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            line-height: 1.2;
+            /* height: 4.8em;*/
+            text-align: left;
+            word-wrap: break-word;
+            display: -webkit-box;
+            /*-webkit-line-clamp: 3 ;*/
+            -webkit-box-orient: vertical;
+        }
+
     </style>
 
     <script>
+        // $(document).ready(function () {
+        //     show_order();
+        // });
+
+        // function show_order() {          
+
+        //     let test = JSON.parse(json_val)
+
+        //     fetch('/firstproject').then((res) => res.json()).then((data) => {
+        //         let findname = $('#findname').html()
+                
+        //         let rows = data['result']
+        //         console.log(rows) // db데이터 다 들어옴
+        //         rows.forEach((a) => {                      
+        //             if(a['name']==findname){
+        //                 console.log(a['name'])
+        //                 console.log(a['comment'])
+        //                 let name = a['name']
+        //                 let comment = a['comment']
+        //                 let pandc = a['pandc']
+        //                 let pandc2 = a['pandc2']
+        //                 let mbti = a['mbti']
+        //                 let Deter = a['Deter']
+        //                 let image = a['image']
+        //                 let image2 = a['image2']
+        //                 console.log(image)
+        //                 console.log(image2)
+
+        //                 let temp_html = `<img src=".${image}" class="image_intro"   
+        //                                     style="border-radius: 70%; width: 375px; height: 375px; float: left; margin: 30px 0px 30px 50px; ">
+        //                                     <div style="float: left;">
+        //                                         <h1 style="padding-top: 120px; padding-left: 60PX; font-size: 40px; ">MY NAME IS</h1>
+        //                                         <div id="findname" style="padding-top: 20px; padding-left: 60PX; font-size: 60px; ">${name}</div>
+        //                                     </div>
+        //                                 <div style="float: left;  margin-left: 80px; padding-left: 30px; padding-top: 20px; height: 440px; width: 630px; border: 1px solid black; border-radius: 20px;" id = "receve_2">
+        //                                     <p1 style=" padding-bottom: 30px;   font-size: 30px;">소개글</p>
+        //                                         <div class="word">
+        //                                             ${comment}
+        //                                         </div>
+        //                                 </div>`
+
+
+        //                 let temp_html2 = `<img class="scr" style="width: 300px; height: 300px;"
+        //                                 src="https://images.unsplash.com/photo-1596230529625-7ee10f7b09b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
+        //                                 <span style="padding-left: 20px; font-size: 30px;">장점:${pandc}</span>`
+        //                 let temp_html3 = `<img class="scr1"  style="width: 300px; height: 300px;"
+        //                                  src="https://images.unsplash.com/photo-1557868118-4ccfc79b2907?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
+        //                                 <span style="padding-left: 20px; font-size: 30px;">단점:${pandc2}</span>`
+
+        //                 let temp_html4 = `<img src="../static/test4444.jpg" class="image_mbti">`
+
+        //                 let temp_html5 = `<h1 class="h1_" style="font-size:60px">${mbti}</h1>
+        //                                 <div class="word2" style="font-size:30px">MBTI를 적는 곳 입니다</p>
+        //                                 </div>`               
+
+        //                 let temp_html6 = `<img src="https://st2.depositphotos.com/4428871/6607/i/450/depositphotos_66073117-stock-photo-hand-writing-to-do-list.jpg"
+        //                                     alt="" class="center">
+        //                                 <div class="gak-text"> ${Deter}</div>`     
+        //                 $('#receve_1').append(temp_html)                    
+        //                 $('#receve_3').append(temp_html2)
+        //                 $('#receve_4').append(temp_html3)
+        //                 $('#receve_5').append(temp_html4)
+        //                 $('#receve_6').append(temp_html5)
+        //                 $('#receve_7').append(temp_html6)
+
+
+
+        //                 //$('#cards-box').append(temp_html)  // id cards-box에 temp_htmp을 추가하기 
+        //             }
+
+                    
+                    
+        //         })
+        //     })
+        // }
+
+
+
         function toggleBox() {
             var x = document.getElementById("myBox");
             if (x.style.display === "none") {
@@ -268,106 +523,58 @@
         }
     </script>
 
-    <script>
-        $(document).ready(function () {   //댓글 보여주기
-            comm_show();
-        });
-        function comm_show() {
-            fetch('/firstproject1').then((res) => res.json()).then((data) => {
-                let rows = data['result']
-                $('#order-box').empty()
-                $('#comment-list').empty()
-                rows.forEach((a) => {
-                    let name1 = a['name1']
-                    let comment1 = a['comment1']
-
-
-                    let temp_html5 = `<div class="card-body">
-                                        <blockquote class="blockquote mb-0">
-                                            <p>${comment1}</p>
-                                            <footer class="blockquote-footer">${name1}</footer>
-                                        </blockquote>
-                                    </div>`
-
-                    $('#comment-list').append(temp_html5)
-                })
-            })
-        }
-
-        function save_comment() {  //댓글 추가하기
-            let name1 = $('#name1').val()
-            let comment1 = $('#comment1').val()
-
-            let formData = new FormData()
-            formData.append("name1_give", name1)
-            formData.append("comment1_give", comment1)
-
-            fetch('/firstproject1', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
-                console.log(data)
-                alert(data["msg"])
-                window.location.reload()
-            });
-        }
-
-
-        function change() {  //변경하기  
+    <script>        
+        function changeposting() { //변경하기
             console.log("a")
             let findname = $('#findname').html()
-            let findmbti = $('#findmbti').html()    // 변경할 사람의 이름 넣어주기 (변경하기 위한 조건용)
-            let name = $('#changename').val()    // 각각의 변경할 txt데이터 넣어주기 
+            let findmbti = $('#findmbti').html() // 변경할 사람의 이름 넣어주기 (변경하기 위한 조건용)
+            let name = $('#changename').val() // 각각의 변경할 txt데이터 넣어주기
             let comments = $('#changecomment').val()
             let pandc = $('#changepandc').val()
             let pandc2 = $('#changepandc2').val()
+            let nature = $('#changenature').val()
             let mbti = $('#changembti').val()
             let Deter = $('#changeDeter').val()
             let image = $('#changechooseFile').val().split('/').pop().split('\\').pop();
             let image_all = $('#changechooseFile')[0].files[0]
-
             let image2 = $('#changechooseFile2').val().split('/').pop().split('\\').pop();
             let image2_all = $('#changechooseFile2')[0].files[0]
-            // let pandc = $('#star').val()  이미지
-            // let mbti = $('#star').val()  이미지 
+            // let pandc = $('#star').val() 이미지
+            // let mbti = $('#star').val() 이미지
 
 
             //콘솔로 데이터 받는거까지 확인완료
-            let formData = new FormData();   // 전달받을 공간 만들기  
-            // formData에 데이터넣기 
+            let formData = new FormData(); // 전달받을 공간 만들기
+            // formData에 데이터넣기
             formData.append("findname_give", findname);
             formData.append("findmbti_give", findmbti);
             formData.append("changename_give", name);
             formData.append("changecomment_give", comments);
             formData.append("changepandc_give", pandc);
-            formData.append("changepandc2_give", pandc2);
+            formData.append("changepandc_give2", pandc2);
             formData.append("changembti_give", mbti);
+            formData.append("changenature_give", nature);
             formData.append("changeDeter_give", Deter);
             formData.append("changechooseFile", image);
             formData.append("changechooseFileall_give", image_all);
             formData.append("changechooseFile2", image2);
             formData.append("changechooseFileall2_give", image2_all);
-            fetch('/sub', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {    //post로 flask에 전송  *경로를 같게 해야함* 
-                alert(['변경완료!'])
-                // window.location.reload() //새로고침
-            })
-        }
-        function toggleBox() { //추가버튼
-            var x = document.getElementById("myBox");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
+            fetch('/sub', { method: "POST", body: formData }).then((res) => res.json()).then((data) => { //post로 flask에 전송 *경로를 같게 해야함*              
+                alert(name+" 님의 정보가 변경 되었습니다!")
+                location.href = "/"
+               // window.location.reload() //새로고침
+                
+            })          
         }
 
-        function close_box() { // 닫기 버튼
-            $('#myBox').hide() //수정한부분
-        }
     </script>
 </head>
 
 <body>
-    <div class="mytitle" float:left;>
-        <img src="./KakaoTalk_20230518_142730857.png" alt="">
+    <div class="mytitle">
+        <h1 style="font-size: 6rem; opacity: 0.75;">Let me introduce myself</h1>
     </div>
+    
 
     <div class="main">
         <input type="radio" id="tab-1" name="show" checked />
@@ -381,129 +588,63 @@
             <label for="tab-4">각오</label>
         </div>
         <div class="content">
-            <div class="content-dis">
-                <img src={{image}} class="image_intro">
-                <div style="padding-left: 30px;float:right; margin-right: 800px;">
-                    <h3 id="findname">{{name}}</h3>
-                    {{comment}}
+            <div class="content-dis" style=" float: left; width:1500px;" id ="receve_1">
+                <img src={{image}} class="image_intro"   
+                    style="border-radius: 70%; width: 375px; height: 375px; float: left; margin: 30px 0px 30px 50px; ">
+                <div style="float: left;">
+                    <h1 style="padding-top: 120px; padding-left: 60PX; font-size: 40px; ">MY NAME IS</h1>
+                    <div id="findname" style="padding-top: 20px; padding-left: 60PX; font-size: 60px; ">{{name}}</div>
+                </div>
+                <div style="float: left;  margin-left: 80px; padding-left: 30px; padding-top: 20px; height: 440px; width: 630px; border: 1px solid black; border-radius: 20px;" id = "receve_2">
+                    <p1 style=" padding-bottom: 30px;   font-size: 30px;">소개글</p>
+                        <div class="word">
+                            {{comment}}
+                        </div>
                 </div>
             </div>
+
+
             <div class="pres">
-                <!-- 장점 기입란 -->
-                <ul>
-                    <li>
-                        <a href="">
-                            <!-- 이미지 또는 텍스트 -->
-                            <div class="screen">
-                                <div class="top">{{pandc}}</div>
-                                <div class="bottom">텍스트</div>
-                                <img
-                                    src="https://images.unsplash.com/photo-1596230529625-7ee10f7b09b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- 단점 기입란 -->
-                <ul>
-                    <li>
-                        <a href="">
-                            <!-- 이미지 또는 텍스트 -->
-                            <div class="screen1">
-                                <div class="top">{{pandc2}}</div>
-                                <div class="bottom">텍스트</div>
-                                <img
-                                    src="https://images.unsplash.com/photo-1557868118-4ccfc79b2907?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                <div class="a" id="receve_3">
+                    <img class="scr" style="width: 300px; height: 300px;"
+                        src="https://images.unsplash.com/photo-1596230529625-7ee10f7b09b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
+                    <span  class="gak-text_" style="padding-left: 13px; font-size: 30px; ">장점:{{pandc}}</span>
+                </div>
+                <div class="pres2">
+                    <div class="a2" id="receve_4">
+                        <img class="scr1"  style="width: 300px; height: 300px;"
+                            src="https://images.unsplash.com/photo-1557868118-4ccfc79b2907?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80">
+                        <span class="gak-text_2" style="padding-left: 20px; font-size: 30px;">단점:{{pandc2}}</span>
+                    </div>
+                </div>
             </div>
+
             <div>
-                <div style="display: flex; height: 100%;">
-                    <img src={{image2}} class="image_intro">
-                    <div style="padding-left: 30px;">
-                        <h3 id="findmbti">{{mbti}}</h3>
-                        MBTI를 적는 곳 입니다
+                <!--mbti-->
+                <div style="display: flex; height: 70%; ">
+                    <div class="box_mbti" style="margin: 50px;" id="receve_5">
+                        <img src="{{image2}}" class="image_mbti">
+                    </div>
+                    <div style="padding: auto" id="receve_6">
+                        <h1 class="h1_" style="font-size:60px">MBTI:{{mbti}}</h1>
+                        <div class="word2" style="font-size:30px">나의 성격:{{nature}}</p>
+                        </div>
                     </div>
                 </div>
 
             </div>
-            <div class="pres1">
-                <style type="text/css">
-                    .tg {
-                        border-collapse: collapse;
-                        border-spacing: 0;
-                    }
 
-                    .tg td {
-                        border-color: black;
-                        border-style: solid;
-                        border-width: 1px;
-                        font-family: Arial, sans-serif;
-                        font-size: 14px;
-                        overflow: hidden;
-                        padding: 20px 20px;
-                        word-break: normal;
-                    }
-
-                    .tg th {
-                        border-color: black;
-                        border-style: solid;
-                        border-width: 1px;
-                        font-family: Arial, sans-serif;
-                        font-size: 14px;
-                        font-weight: normal;
-                        overflow: hidden;
-                        padding: 20px 20px;
-                        word-break: normal;
-                    }
-
-                    .tg .tg-91w8 {
-                        border-color: inherit;
-                        font-size: 32px;
-                        text-align: center;
-                        vertical-align: top
-                    }
-
-                    .tg .tg-0pky {
-                        border-color: inherit;
-                        text-align: left;
-                        vertical-align: top
-                    }
-                </style>
-                <table class="tg" style="table-layout: fixed; width: 1175px">
-                    <colgroup>
-                        <col style="width: 171.2px">
-                        <col style="width: 1122.2px">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th height="44" class="tg-0pky">5월의 목표</th>
-                            <th class="tg-91w8">{{Deter}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr height="88">
-                            <td class="tg-0pky">6월의 목표</td>
-                            <td class="tg-91w8">글자 크기와 폰트 확인용 텍스트.</td>
-                        </tr>
-                        <tr height="88">
-                            <td class="tg-0pky">7월의 목표</td>
-                            <td class="tg-91w8">글자 크기와 폰트 확인용 텍스트.</td>
-                        </tr>
-                        <tr height="88">
-                            <td class="tg-0pky">8월의 목표</td>
-                            <td class="tg-91w8">글자 크기와 폰트 확인용 텍스트.</td>
-                        </tr>
-                        <tr height="88">
-                            <td class="tg-0pky">9월의 목표</td>
-                            <td class="tg-91w8">글자 크기와 폰트 확인용 텍스트.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="content-dis">
+                <!--각오-->
+                <div class="gak-wrap">
+                    <div class="gak-image" id = "receve_7">
+                        <img src="https://st2.depositphotos.com/4428871/6607/i/450/depositphotos_66073117-stock-photo-hand-writing-to-do-list.jpg"
+                            alt="" class="center">
+                        <div class="gak-text"> {{Deter}}</div>
+                    </div>
+                </div>
             </div>
-            <div>
-            </div>
+
         </div>
     </div>
     <!-- 및에가 조원 추가하기 버튼 -->
@@ -523,72 +664,48 @@
                 </div>
 
                 <!-- 사진을 넣는다면? 크기나 보여줄수있는 영역을 설정할수 있을까?
-업로드하는 형식의 코드가 필요할까? -->
+        업로드하는 형식의 코드가 필요할까? -->
                 <div class="form-floating mb-3">
-                    <input class="file" id="changechooseFile" type="file" accept="image/png, image/jpeg, image/gif">
-                    <label for="floatingInput">변경할 사진</label>
+                    <input class="file" id="changechooseFile" type="file" accept="image/png, image/jpeg, image/gif" >
+                    <label for="floatingInput" style="text-align: center;">변경할 소개 사진</label>
                 </div>
-                <div class="form-floating mb-3"> <!--사진2-->
+                <div class="form-floating mb-3">
+                    <!--사진2-->
                     <input class="file" id="changechooseFile2" type="file" accept="image/png, image/jpeg, image/gif">
-                    <label for="floatingInput">변경할 사진2</label>
+                    <label for="floatingInput" style="text-align: center;">변경할 MBTI 사진</label>
                 </div>
                 <!-- 및에 두개의 박스중 어느것이 좋을지 -->
                 <div class="form-floating">
                     <textarea class="form-control" placeholder="Leave a comment here" id="changepandc"></textarea>
-                    <label for="floatingTextarea">변경할 장점</label>
+                    <label for="floatingTextarea" >변경할 장점</label>
                 </div>
-                <div class="form-floating">
+                <div class="form-floating" style="margin-top: 20px;">
                     <textarea class="form-control" placeholder="Leave a comment here" id="changepandc2"></textarea>
                     <label for="floatingTextarea">변경할 단점</label>
+                </div>
+                <div class="form-floating" style="margin-top: 20px;">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="changenature"></textarea>
+                    <label for="floatingTextarea">변경할 성격</label>
                 </div>
 
                 <div style="margin: 20px;"></div>
                 <div class="form-floating">
                     <textarea class="form-control" placeholder="Leave a comment here" id="changecomment"
                         style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">변경할 내소개</label>
+                    <label for="floatingTextarea2">변경할 소개글</label>
                 </div>
-                <div class="form-floating">
+                <div class="form-floating" style="margin-top: 20px;">
                     <textarea class="form-control" placeholder="Leave a comment here" id="changeDeter"
                         style="height: 100px"></textarea>
                     <label for="floatingTextarea2">변경할 임하는 각오</label>
                 </div>
                 <div class="my-pb">
-                    <button onclick="change()" type="button" class="btn btn-dark">등록</button>
+                    <button onclick="changeposting()" type="button" class="btn btn-dark">등록</button>
                     <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
                 </div>
             </div>
         </div>
     </div>
-    <hr>
-    <div class="mypost">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name1" placeholder="url" style="width: 150px" />
-            <label for="floatingInput">이름</label>
-        </div>
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="comment1"
-                style="height: 100px"></textarea>
-            <label for="floatingTextarea2">응원댓글</label>
-        </div>
-        <button onclick="save_comment()" type="button" class="btn btn-dark">
-            댓글 남기기
-        </button>
-    </div>
-    </p>
-    <hr>
-    <p>
-    <div class="mycards" id="comment-list">
-        <div class="card">
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>새로운 앨범 너무 멋져요!</p>
-                    <footer class="blockquote-footer">호빵맨</footer>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-    </p>
 </body>
 
 </html>

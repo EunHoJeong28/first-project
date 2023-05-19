@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sub</title>
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    body {
+    font-family: 'Roboto', sans-serif;
+    color: #545E6C;
+    background: #f5f5f5;
+    font-size: 14px;
+    padding: 30px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+    font-weight: 700;
+    }
+    a {
+    color: #2d7788;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    }
+    a:hover {
+    text-decoration: underline;
+    color: #1a454f;
+    }
+    a:focus {
+    text-decoration: none;
+    }
+    p {
+    line-height: 1.5;
+    }
+    .wrapper {
+    background: #42A8C0;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar-wrapper {
+    background: #42A8C0;
+    position: absolute;
+    right: 0;
+    width: 240px;
+    height: 100%;
+    min-height: 800px;
+    color: #fff;
+    }
+    .sidebar-wrapper a {
+    color: #fff;
+    }
+    .sidebar-wrapper .profile-container {
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #fff;
+    }
+    .sidebar-wrapper .name {
+    font-size: 32px;
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: 10px;
+    }
+    .sidebar-wrapper .tagline {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
+    }
+    .sidebar-wrapper .profile {
+    margin-bottom: 15px;
+    }
+    .sidebar-wrapper .contact-list .fa {
+    margin-right: 5px;
+    font-size: 18px;
+    vertical-align: middle;
+    }
+    .sidebar-wrapper .contact-list li {
+    margin-bottom: 15px;
+    }
+    .sidebar-wrapper .contact-list li:last-child {
+    margin-bottom: 0;
+    }
+    .sidebar-wrapper .contact-list .email .fa {
+    font-size: 14px;
+    }
+    .sidebar-wrapper .container-block {
+    padding: 30px;
+    }
+    .sidebar-wrapper .container-block-title {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 15px;
+    }
+    .sidebar-wrapper .degree {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    }
+    .sidebar-wrapper .education-container .item {
+    margin-bottom: 15px;
+    }
+    .sidebar-wrapper .education-container .item:last-child {
+    margin-bottom: 0;
+    }
+    .sidebar-wrapper .education-container .meta {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 0;
+    }
+    .sidebar-wrapper .education-container .time {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    margin-bottom: 0px;
+    }
+    .sidebar-wrapper .languages-container .lang-desc {
+    color: rgba(255, 255, 255, 0.6);
+    }
+    .sidebar-wrapper .languages-list {
+    margin-bottom: 0;
+    }
+    .sidebar-wrapper .languages-list li {
+    margin-bottom: 10px;
+    }
+    .sidebar-wrapper .languages-list li:last-child {
+    margin-bottom: 0;
+    }
+    .sidebar-wrapper .interests-list {
+    margin-bottom: 0;
+    }
+    .sidebar-wrapper .interests-list li {
+    margin-bottom: 10px;
+    }
+    .sidebar-wrapper .interests-list li:last-child {
+    margin-bottom: 0;
+    }
+    .main-wrapper {
+    background: #fff;
+    padding: 60px;
+    padding-right: 300px;
+    }
+    .main-wrapper .section-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 500;
+    color: #2d7788;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 20px;
+    }
+    .main-wrapper .section-title .fa {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    display: inline-block;
+    color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: #2d7788;
+    text-align: center;
+    padding-top: 8px;
+    font-size: 16px;
+    position: relative;
+    top: -2px;
+    }
+    .main-wrapper .section {
+    margin-bottom: 60px;
+    }
+    .main-wrapper .experiences-section .item {
+    margin-bottom: 30px;
+    }
+    .main-wrapper .upper-row {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2px;
+    }
+    .main-wrapper .job-title {
+    color: #3F4650;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    }
+    .main-wrapper .time {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #97AAC3;
+    }
+    .main-wrapper .company {
+    margin-bottom: 10px;
+    color: #97AAC3;
+    }
+    .main-wrapper .project-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 5px;
+    }
+    .main-wrapper .projects-section .intro {
+    margin-bottom: 30px;
+    }
+    .main-wrapper .projects-section .item {
+    margin-bottom: 15px;
+    }
+    .skillset .item {
+    margin-bottom: 15px;
+    overflow: hidden;
+    }
+    .skillset .level-title {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    }
+    .skillset .level-bar {
+    height: 12px;
+    background: #f5f5f5;
+    }
+    .skillset .level-bar-inner {
+    height: 12px;
+    background: #7bc2d3;
+    }
+    .footer {
+    padding: 30px;
+    padding-top: 60px;
+    }
+    .footer .copyright {
+    line-height: 1.6;
+    color: #545E6C;
+    font-size: 13px;
+    }
+    .footer .fa-heart {
+    color: #fb866a;
+    }
+    /* Extra small devices (phones, less than 768px) */
+    @media (max-width: 767px) {
+    .sidebar-wrapper {
+        position: static;
+        width: inherit;
+    }
+    .main-wrapper {
+        padding: 30px;
+    }
+    .main-wrapper .time {
+        position: static;
+        display: block;
+        margin-top: 5px;
+    }
+    .main-wrapper .upper-row {
+        margin-bottom: 0;
+    }
+    }
+    /* Small devices (tablets, 768px and up) */
+    /* Medium devices (desktops, 992px and up) */
+    @media (min-width: 992px) {
+    .skillset .level-title {
+        display: inline-block;
+        float: left;
+        width: 30%;
+        margin-bottom: 0;
+    }
+    .skillset .level-bar {
+        display: inline-block;
+        width: 70%;
+        float: left;
+        position: relative;
+        top: 1px;
+    }
+    }
+    .image {
+        background-color: green;
+        color: white;
+        width: 1400px;
+        height: 300px;
+        margin: 0px auto 0px auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://t1.daumcdn.net/cfile/tistory/224B624356DE9B4D19');
+        background-position: center;
+        background-size: cover;
+    }      
+    </style>
+
+</head>
+<body>
+    <div class="image">    
+        <h1>나를 소개합니다.</h1>
+    </div>
+
+        <div class="wrapper">
+            <div class="sidebar-wrapper">
+                <div class="profile-container">
+                    <img class="profile" src="https://t1.daumcdn.net/cfile/tistory/224B624356DE9B4D19" alt=""  style="width:150px; height:150px;"/>
+                    <h1 class="name" id="findname">김성진</h1>
+                    <h3 class="tagline">항상 열심히 하는 개발자가 되겠습니다!</h3>
+                </div><!--//profile-container-->
+                
+                <div class="contact-container container-block">
+                    <ul class="list-unstyled contact-list">
+                        <li class="email"><i class="fa fa-envelope"></i><a href="mailto: yourname@email.com">ksj0904ksj@naver.com</a></li>
+                        <li class="phone"><i class="fa fa-phone"></i><a href="tel:0123 456 789">010-1234-5678</a></li>
+                        <li class="website"><i class="fa fa-globe"></i><a href="https://tigidevelopment.tistory.com/" target="_blank">블로그</a></li>                               
+                        <li class="twitter"><i class="fa fa-twitter"></i><a href="https://twitter.com/3rdwave_themes" target="_blank">SNS</a></li>
+                    </ul>
+                </div><!--//contact-container-->
+           
+                <div class="languages-container container-block">
+                    <h2 class="container-block-title">가장 배우고싶은 언어</h2>
+                    <ul class="list-unstyled interests-list">
+                        <li>JAVA <span class="lang-desc">1위</span></li>
+                        <li>PYTHON <span class="lang-desc">2위</span></li>
+                        <li>C <span class="lang-desc">3위</span></li>
+                    </ul>
+                </div><!--//interests-->
+
+                <div class="mypost" id="post-box">
+                    <div class="form-floating mb-3">
+                        <input id="changename" type="email" class="form-control" placeholder="이름">
+                        <label>이름</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea id="changecomment" class="form-control" placeholder="소개"></textarea>
+                        <label for="floatingTextarea2">소개</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea id="changepandc" class="form-control" placeholder="장/단점"></textarea>
+                        <label for="floatingTextarea2">장/단점</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea id="changembti" class="form-control" placeholder="mbti"></textarea>
+                        <label for="floatingTextarea2">mbti</label>
+                    </div>                
+                    <div class="form-floating">
+                        <textarea id="changeDeter" class="form-control" placeholder="각오"></textarea>
+                        <label for="floatingTextarea2">각오</label>
+                    </div>
+                    <div>
+                        <input class="file" id="changechooseFile" type="file"  accept="image/png, image/jpeg, image/gif">
+                    </div>
+            
+                    <div class="mybtns">
+                        <button onclick="changeposting()" type="button" class="btn btn-dark">수정하기</button>
+                        <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
+                    </div>               
+                </div>
+
+            </div><!--//sidebar-wrapper-->
+           
+            <div class="main-wrapper">
+                
+                <section class="section summary-section">
+                    <h2 class="section-title"><i class="fa fa-user"></i>나를 소개합니다</h2>
+                    <div class="summary">
+                        <p>나를 소개하는글 작성</p>
+                    </div><!--//summary-->
+                </section><!--//section-->
+                
+                <section class="section experiences-section">
+                    <h2 class="section-title"><i class="fa fa-briefcase"></i>detail</h2>
+                    
+                    <div class="item">
+                        <div class="meta">
+                            <div class="upper-row">
+                                <h3 class="job-title">생년월일</h3>       
+                            </div><!--//upper-row-->
+                        </div><!--//meta-->    
+                        <div class="details">    
+                            <p>2000-09-04</p>                                                     
+                        </div><!--//details-->               
+                    </div><!--//item-->
+                    
+                    
+                    <div class="item">
+                        <div class="meta">
+                            <div class="upper-row">
+                                <h3 class="job-title">취미</h3>
+                            </div><!--//upper-row-->
+                        </div><!--//meta-->
+
+                        <div class="details">    
+                            <p>게임</p>                                                     
+                        </div><!--//details-->
+                    </div><!--//item-->
+                    
+                    <div class="item">
+                        <div class="meta">
+                            <div class="upper-row">
+                                <h3 class="job-title">각오</h3>
+                            </div><!--//upper-row-->                            
+                        </div><!--//meta-->
+                        <div class="details">
+                            <p>열심히 하겠습니다!</p>  
+                        </div><!--//details-->
+                    </div><!--//item-->
+                    
+                </section><!--//section-->
+                
+                <section class="skills-section section">
+                    <h2 class="section-title"><i class="fa fa-rocket"></i>Skills</h2>
+                    <div class="skillset">        
+                        <div class="item">
+                            <h3 class="level-title">Python &amp; Django</h3>
+                            <div class="level-bar">
+                                <div class="level-bar-inner" data-level="98%">
+                                </div>                                      
+                            </div><!--//level-bar-->                                 
+                        </div><!--//item-->
+                        
+                        <div class="item">
+                            <h3 class="level-title">Javascript &amp; jQuery</h3>
+                            <div class="level-bar">
+                                <div class="level-bar-inner" data-level="98%">
+                                </div>                                      
+                            </div><!--//level-bar-->                                 
+                        </div><!--//item-->
+                        
+                        <div class="item">
+                            <h3 class="level-title">Angular</h3>
+                            <div class="level-bar">
+                                <div class="level-bar-inner" data-level="98%">
+                                </div>                                      
+                            </div><!--//level-bar-->                                 
+                        </div><!--//item-->
+                        
+                        <div class="item">
+                            <h3 class="level-title">HTML5 &amp; CSS</h3>
+                            <div class="level-bar">
+                                <div class="level-bar-inner" data-level="35%">
+                                </div>                                      
+                            </div><!--//level-bar-->                                 
+                        </div><!--//item-->
+                        
+                        <div class="item">
+                            <h3 class="level-title">java</h3>
+                            <div class="level-bar">
+                                <div class="level-bar-inner" data-level="55%">
+                                </div>                                      
+                            </div><!--//level-bar-->                                 
+                        </div><!--//item-->                       
+                    </div>  
+                </section><!--//skills-section-->            
+            </div><!--//main-body-->
+        </div>
+    
+     
+        <!-- Javascript -->          
+        <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+        <!-- custom js -->
+        <script type="text/javascript" src="assets/js/main.js"></script>      
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>  
+        <script>
+            function changeposting() {  //변경하기        
+            
+            let findname = $('#findname').html()    // 변경할 사람의 이름 넣어주기 (변경하기 위한 조건용)
+            let name = $('#changename').val()    // 각각의 변경할 txt데이터 넣어주기 
+            let comments = $('#changecomment').val()
+            let pandc = $('#changepandc').val()
+            let mbti = $('#changembti').val()
+            let Deter = $('#changeDeter').val()
+            let image = $('#changechooseFile').val().split('/').pop().split('\\').pop();
+            let image_all = $('#changechooseFile')[0].files[0]   
+            // let pandc = $('#star').val()  이미지
+            // let mbti = $('#star').val()  이미지 
+            
+            
+            //콘솔로 데이터 받는거까지 확인완료
+            let formData = new FormData();   // 전달받을 공간 만들기  
+            // formData에 데이터넣기 
+            formData.append("findname_give", findname); 
+            formData.append("changename_give", name);    
+            formData.append("changecomment_give", comments);
+            formData.append("changepandc_give", pandc);
+            formData.append("changembti_give", mbti);
+            formData.append("changeDeter_give", Deter);
+            formData.append("changechooseFile", image);
+            formData.append("changechooseFileall_give",image_all);            
+            fetch('/sub', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {    //post로 flask에 전송  *경로를 같게 해야함* 
+                alert(['변경완료!'])
+                // window.location.reload() //새로고침
+            })
+            }
+        </script>    
+
+        <!-- <script>   // get부분 스크립트 
+            $(document).ready(function () {
+                show_order();
+            });
+            
+            function show_order() {
+                fetch('/introduce_sub').then((res) => res.json()).then((data) => {
+                    console.log(data)
+                    let rows = data['result']
+                    $('#order-box').empty()
+                    console.log(data)
+                    rows.forEach((a) => {
+                        let introduce = a['introduce']
+                        let pros_cons = a['pros_cons']
+                        let mbti = a['mbti']
+                        let resolution = a['resolution']
+                        
+                        let temp_html = `<td>${introduce}</td>`
+                        let temp_html2 = `<td>${pros_cons}</td>`
+                        let temp_html3 = `<td>${mbti}</td>`
+                        let temp_html4 = `<td>${resolution}</td>`
+                        $('#con1').append(temp_html)
+                        $('#con2').append(temp_html2)
+                        $('#con3').append(temp_html3)
+                        $('#con4').append(temp_html4)
+                    })
+                })
+            }
+
+            function save_order() {
+                let introduce = $('#introduce').val()
+                let pros_cons = $('#pros_cons').val()
+                let mbti = $('#mbti').val()
+                let resolution = $('#resolution').val()
+                
+                
+                let formData = new FormData()
+                formData.append("introduce_give", introduce)
+                formData.append("pros_cons_give", pros_cons)
+                formData.append("mbti_give", mbti)
+                formData.append("resolution_give", resolution)
+                
+                fetch('/introduce_sub', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
+                console.log(data)
+                alert(data["msg"])
+                window.location.reload()
+                });
+            }
+            </script> -->
+    
+        
+
+</body>
+</html>
